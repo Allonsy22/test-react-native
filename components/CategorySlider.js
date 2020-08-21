@@ -32,8 +32,7 @@ export default class CategorySlider extends React.Component {
                 <TouchableOpacity key={index}>
                     <View
                         style={[
-                            styles.category, 
-                            { backgroundColor: category.bgColor }
+                            styles.category,
                         ]}
                     >
                         <Image
@@ -49,28 +48,27 @@ export default class CategorySlider extends React.Component {
     render() {
         const { categories } = this.state;
         return (
-            <ScrollView
-                contentContainerStyle={styles.container}
-                horizontal
-                showsHorizontalScrollIndicator
-            >
-                {this.renderCategory(categories)}
-            </ScrollView>
+            <View>
+                <ScrollView
+                    style={[{height: 100}]}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                >
+                    {this.renderCategory(categories)}
+                </ScrollView>
+            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: colors.bg,
-    },
     category: {
         width: DEVICE_WIDTH,
         height: DEVICE_WIDTH,
         borderRadius: DEVICE_WIDTH / 2,
         alignItems: 'center',
         margin: 15,
+        backgroundColor: colors.primary2,
     },
     image: {
         borderRadius: DEVICE_WIDTH / 2,

@@ -3,6 +3,7 @@ import CategorySlider from './CategorySlider';
 import Toolbar from './Toolbar';
 import AnimatedItem from './AnimatedItem';
 import Loading from './Loading';
+import ItemCard from './ItemCard';
 
 export {
     DrawerContent,
@@ -10,4 +11,5 @@ export {
     Toolbar,
     AnimatedItem,
     Loading,
+    ItemCard,
 };

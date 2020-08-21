@@ -9,6 +9,7 @@ import {
     Toolbar,
     AnimatedItem,
     Loading,
+    ItemCard,
 } from '../components';
 
 import ListScreen from '../screens/ListScreen';
@@ -21,7 +22,7 @@ export default function AppNavigation(props) {
         <Drawer.Navigator
             drawerContent={props => <DrawerContent {...props} />}
         >
-            <Drawer.Screen name="Home" component={Loading} />
+            <Drawer.Screen name="Home" component={ItemCard} />
             <Drawer.Screen name="Login" component={LoginScreen} />
         </Drawer.Navigator>
     )
