@@ -6,6 +6,7 @@ import Loading from './Loading';
 import ItemCard from './ItemCard';
 import LongPressButton from './LongPressButton';
 import HorizontalCircleScroll from './HorizontalCircleScroll';
+import CircularProgress from './CircularProgress';
 
 export {
     DrawerContent,
@@ -16,4 +17,5 @@ export {
     ItemCard,
     LongPressButton,
     HorizontalCircleScroll,
+    CircularProgress,
 };
