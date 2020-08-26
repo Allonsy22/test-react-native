@@ -10,6 +10,8 @@ import {
     AnimatedItem,
     Loading,
     ItemCard,
+    LongPressButton,
+    HorizontalCircleScroll,
 } from '../components';
 
 import ListScreen from '../screens/ListScreen';
@@ -23,7 +25,7 @@ export default function AppNavigation(props) {
         <Drawer.Navigator
             drawerContent={props => <DrawerContent {...props} />}
         >
-            <Drawer.Screen name="Home" component={CardListScreen} />
+            <Drawer.Screen name="Home" component={HorizontalCircleScroll} />
             <Drawer.Screen name="Login" component={LoginScreen} />
         </Drawer.Navigator>
     )

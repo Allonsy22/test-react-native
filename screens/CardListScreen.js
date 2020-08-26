@@ -1,16 +1,11 @@
 import React from 'react';
 import {
-    StatusBar,
-    Text,
     View,
     StyleSheet,
-    FlatList,
     Dimensions,
-    Image,
     Animated,
 } from 'react-native';
-import { ItemCard, Loading } from '../components';
-import Svg, { Rect } from 'react-native-svg';
+import { ItemCard } from '../components';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { data } from '../utils/data';
@@ -25,6 +20,30 @@ export default class CardListCard extends React.Component {
     constructor(props) {
         super(props);
         this.scrollX = new Animated.Value(0);
+    };
+
+    renderBgImage(data) {
+        return data.map((item, index) => {
+            const translateX = this.scrollX.interpolate({
+                inputRange: [(index - 1) * CARD_WIDTH, (index) * CARD_WIDTH],
+                outputRange: [-width, 0]
+            });
+            const opacity = this.scrollX.interpolate({
+                inputRange: [(index - 1) * CARD_WIDTH, (index) * CARD_WIDTH, (index + 1) * CARD_WIDTH],
+                outputRange: [0.1, 1, 0.1]
+            });
+            return (
+                <Animated.Image
+                    style={[
+                        styles.bgImage,
+                        StyleSheet.absoluteFillObject, 
+                        {transform: [{translateX}], opacity},
+                    ]}
+                    source={{ uri: item.bgImage }}
+                    key={index}
+                />
+            )
+        });
     };
 
     renderItem({ item, index }) {
@@ -49,9 +68,10 @@ export default class CardListCard extends React.Component {
         const items = [{ id: 'left-spacer' }, ...data, { id: 'right-spacer' }]
         const scrollX = this.scrollX;
         return (
-            <View style={[{flex: 1}]}>
+            <View style={[{ flex: 1 }]}>
+                {this.renderBgImage(data)}
                 <LinearGradient
-                    colors={[colors.text, colors.bg]}
+                    colors={['transparent', colors.bg]}
                     style={{
                         width,
                         height,
@@ -85,5 +105,11 @@ export default class CardListCard extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: colors.text,
     },
+    bgImage: {
+        width,
+        height,
+        resizeMode: 'cover'
+    }
 });

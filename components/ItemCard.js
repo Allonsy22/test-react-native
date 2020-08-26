@@ -30,14 +30,20 @@ export default function ItemCard(props) {
         index * CARD_WIDTH,
     ];
 
+    const opacity = scrollX.interpolate({
+        inputRange,
+        outputRange: [0.8, 1, 0.8]
+    });
+
     const translateY = scrollX.interpolate({
         inputRange,
-        outputRange: [100, 0, 100],
+        outputRange: [100, 30, 100],
     });
 
     return (
         <Animated.View style={[
             { transform: [{ translateY }], 
+            opacity,
             width: CARD_WIDTH}
         ]}
         >

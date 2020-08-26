@@ -75,11 +75,14 @@ export default function Loading(props) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        position: 'absolute',
+        top: 300,
         flexDirection: 'row',
+        alignSelf: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.bg,
+        backgroundColor: 'transparent',
+        zIndex: 3000,
     },
     circle: {
         width: CIRCLE_WIDTH,
