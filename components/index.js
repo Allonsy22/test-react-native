@@ -7,6 +7,8 @@ import ItemCard from './ItemCard';
 import LongPressButton from './LongPressButton';
 import HorizontalCircleScroll from './HorizontalCircleScroll';
 import CircularProgress from './CircularProgress';
+import AccelerometerComponent from './Accelerometer';
+import AudioRecord from './AudioRecord';
 
 export {
     DrawerContent,
@@ -18,4 +20,6 @@ export {
     LongPressButton,
     HorizontalCircleScroll,
     CircularProgress,
+    AccelerometerComponent,
+    AudioRecord,
 };
