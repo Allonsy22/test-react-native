@@ -6,6 +6,9 @@ import * as FileSystem from 'expo-file-system';
 import axios from 'axios';
 
 const SOUND = '../assets/aumiUUU.mp3';
+const SPEECH_URI = 'https://api.wit.ai/speech?v=20200513';
+const MESSAGE_URI = 'https://api.wit.ai/message?v=20200513&q=';
+const TOKEN = 'ICOSYUVDBUMVHQJGMWXN3UIX5Y5I7WLK';
 
 export default class AudioRecord extends React.Component {
     constructor(props) {
@@ -18,22 +21,34 @@ export default class AudioRecord extends React.Component {
 
     componentDidMount() {
         this.getPermission();
-        axios.post('https://dialogflow-allonsy.herokuapp.com/test', SOUND, {
-            headers: { 'content-type': 'audio/mp3' },
-            responseType: 'blob',
+        this.post();
+        // axios.post('https://dialogflow-allonsy.herokuapp.com/test', SOUND, {
+        //     headers: { 'content-type': 'audio/mp3' },
+        // })
+        //     .then(async response => {
+        //         try {
+        //             // const soundObject = new Audio.Sound();
+        //             // await soundObject.loadAsync(response.data);
+        //             // await soundObject.playAsync();
+        //             console.log(response.data);
+        //         } catch (error) {
+        //             console.log(error);
+        //         }
+        //     })
+        //     .catch(error => console.log(error));
+    };
+
+    post() {
+        axios.post(SPEECH_URI, SOUND, {
+            headers: { 
+                'Content-Type': 'audio/mpeg3', 
+                'Authorization': 'Bearer ' + TOKEN,
+            },
         })
-            .then(async response => {
-                try {
-                    // const soundObject = new Audio.Sound();
-                    // await soundObject.loadAsync(response.data);
-                    // await soundObject.playAsync();
-                    const blob = new Blob([response.data], {type: 'audio/mp3'});
-                    console.log(blob);
-                } catch (error) {
-                    console.log(error);
-                }
-            })
-            .catch(error => console.log(error));
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch( error => console.log(error));
     };
 
     async getPermission() {

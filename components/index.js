@@ -9,6 +9,7 @@ import HorizontalCircleScroll from './HorizontalCircleScroll';
 import CircularProgress from './CircularProgress';
 import AccelerometerComponent from './Accelerometer';
 import AudioRecord from './AudioRecord';
+import MazeAnimation from './MazeAnimation';
 
 export {
     DrawerContent,
@@ -22,4 +23,5 @@ export {
     CircularProgress,
     AccelerometerComponent,
     AudioRecord,
+    MazeAnimation,
 };

@@ -15,6 +15,7 @@ import {
     CircularProgress,
     AccelerometerComponent,
     AudioRecord,
+    MazeAnimation,
 } from '../components';
 
 import ListScreen from '../screens/ListScreen';
@@ -28,7 +29,7 @@ export default function AppNavigation(props) {
         <Drawer.Navigator
             drawerContent={props => <DrawerContent {...props} />}
         >
-            <Drawer.Screen name="Home" component={AudioRecord} />
+            <Drawer.Screen name="Home" component={MazeAnimation} />
             <Drawer.Screen name="Login" component={LoginScreen} />
         </Drawer.Navigator>
     )
